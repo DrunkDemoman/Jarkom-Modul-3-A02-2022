@@ -613,3 +613,7 @@ http_access allow !LOID_DOMAIN WEEKENDS
 http_access allow !FRANKY_DOMAIN WEEKENDS
 ```
 
+# Kendala
++ Pembuatan script cukup tergesa-gesa sehingga muncul bug pada saat mempersiapkan demo.
++ Pembuatan DHCP Relay cukup sulit untuk dicari karena belum mengetahui keyword yang tepat.
++ Koneksi kepada HTTPS sempat mengalami kesulitan karena ketidaktelitian penyetelan.
