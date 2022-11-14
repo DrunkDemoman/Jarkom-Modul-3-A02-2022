@@ -87,3 +87,84 @@ iface eth0 inet static
     gateway 10.0.2.1
 ```
 
+## No. 2
+### Ostania
+#### .bashrc
+```
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 10.0.0/16
+apt-get update
+apt-get install isc-dhcp-relay -y
+```
+
+## No. 3-4
+### Westalis
+
+#### /etc/dhcp/dhcpd.conf
+```
+ddns-update-style none;
+option domain-name "example.org";
+option domain-name-servers ns1.example.org, ns2.example.org;
+log-facility local7;
+
+subnet 10.0.1.0 netmask 255.255.255.0 {
+    range 10.0.1.50 10.0.1.88;
+    range 10.0.1.120 10.0.1.155;
+    option routers 10.0.1.1;
+    option broadcast-address 10.0.1.255;
+}
+
+subnet 10.0.3.0 netmask 255.255.255.0 {
+    range 10.0.3.10 10.0.3.30;
+    range 10.0.3.60 10.0.3.85;
+    option routers 10.0.3.1;
+    option broadcast-address 10.0.3.255;
+}
+
+subnet 10.0.2.0 netmask 255.255.255.0 {
+}
+
+```
+
+#### /etc/default/isc-dhcp-server
+```
+INTERFACES="eth0"
+```
+
+### SSS
+#### /etc/network/interfaces
+```
+auto eth0
+iface eth0 inet dhcp
+```
+
+### Garden
+#### /etc/network/interfaces
+```
+auto eth0
+iface eth0 inet dhcp
+
+```
+
+### Eden
+#### /etc/network/interfaces
+```
+auto eth0
+iface eth0 inet dhcp
+
+```
+### NewstonCastle
+#### /etc/network/interfaces
+```
+auto eth0
+iface eth0 inet dhcp
+
+```
+
+### KemonoPark
+#### /etc/network/interfaces
+```
+auto eth0
+iface eth0 inet dhcp
+
+```
+
